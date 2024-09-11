@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.realitybudget"
-        minSdk = 20
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -41,3 +41,4 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+

@@ -26,7 +26,6 @@ public class newAccActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private EditText emailInput, passwordInput, fullNameInput, phoneInput;
-    private Button signUpBtn;
     FirebaseFirestore fStore;
     String userID;
 
@@ -42,11 +41,11 @@ public class newAccActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passInput);
         phoneInput = findViewById(R.id.phoneInput);
-        signUpBtn = findViewById(R.id.newUserBtn);
 
 
     }
 
+    //Creates user account when create account button is clicked
     public void accAdded(View v){
         String fullName = fullNameInput.getText().toString().trim();
         String email = emailInput.getText().toString().trim();
@@ -79,6 +78,7 @@ public class newAccActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
+                        //Creates user and saves user info to firestore database
                         Toast.makeText(newAccActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
                         userID = auth.getCurrentUser().getUid();
                         DocumentReference docRef = fStore.collection("users").document(userID);
@@ -106,7 +106,7 @@ public class newAccActivity extends AppCompatActivity {
     }
 
 
-
+    //Takes user back too login page when back arrow button is clicked
     public void goBack(View v){
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
